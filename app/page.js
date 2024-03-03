@@ -62,37 +62,67 @@ export default function App() {
         </div>
       </div>
 
-      <div className="overflow-hidden h-[100vh] w-[100vw] flex justify-center items-center flex-col">
-        <h1 className="text-[30px]">our projects</h1>
-        <div
-          style={
-            seein
-              ? {
-                  transition: "all 2s",
-                  opacity: 1,
-                  transform: "translateY(40px)",
-                }
-              : { opacity: 0, transform: "translateY(-40px)" }
-          }
-          className="flex justify-center items-center gap-[20px] h-[30%]"
-        >
-          <div
-            className="projects flex justify-center items-center h-[200px] w-[150px] border-2 border-white rounded-[10px]"
-            ref={myRef}
-          >
-            ref1
+      <div
+        style={
+          seein
+            ? {
+                transition: "all 2s",
+                opacity: 1,
+                transform: "translateY(40px)",
+              }
+            : { opacity: 0, transform: "translateY(-40px)" }
+        }
+        className="overflow-hidden h-[100vh] w-[100vw] flex justify-center items-center gap-[30px]"
+      >
+        <h1 className="text-[30px]">About Us</h1>
+        <div className="flex justify-center items-center gap-[20px] h-[30%]">
+          <div className="projects" ref={myRef}>
+            <p className="aboutText">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              id libero augue.
+            </p>
+            <div className="ag-courses-item_bg"></div>
+            <img
+              className="rounded-[10px] relative"
+              alt="ppl"
+              src="/chisato.jpg"
+              width={250}
+            ></img>
+            <h1 className="h1">Chisato</h1>
+            <p>about Chisato</p>
+            <p className="aboutText"></p>
           </div>
-          <div
-            className="projects flex justify-center items-center h-[200px] w-[150px] border-2 border-white rounded-[10px]"
-            ref={myRef}
-          >
-            ref2
+          <div className="projects" ref={myRef}>
+            <p className="aboutText">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              id libero augue.
+            </p>
+            <div className="ag-courses-item_bg"></div>
+            <img
+              width={250}
+              className="rounded-[10px]"
+              alt="ppl"
+              src="/hutao.jpg"
+            ></img>
+            <h1 className="h1">Hu Tao</h1>
+            <p>about hu tao</p>
           </div>
-          <div
-            className="projects flex justify-center items-center h-[200px] w-[150px] border-2 border-white rounded-[10px]"
-            ref={myRef}
-          >
-            ref3
+          <div className="projects" ref={myRef}>
+            <p className="aboutText">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              id libero augue.
+            </p>
+            <div className="ag-courses-item_bg"></div>
+
+            <img
+              width={250}
+              className="rounded-[10px]"
+              alt="ppl"
+              src="/furina.jpg"
+            ></img>
+            <h1 className="h1">Furina</h1>
+            <p>about Furina</p>
+            <p className="aboutText"></p>
           </div>
         </div>
       </div>
