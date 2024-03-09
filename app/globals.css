@@ -5,9 +5,9 @@
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  background-image: linear-gradient(#242424, #444444);
   color: #f9f8f0;
   user-select: none;
+  background-color: #242424;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -159,16 +159,35 @@ html {
 .down:hover {
   border-bottom: 2px solid rgb(61, 61, 61);
 }
-
-.cover {
-  animation: null 3s infinite linear;
+.popup {
+  position: absolute;
+  top: 30vh;
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #444444;
+  border-radius: 10px;
+  z-index: 99999999;
+  backdrop-filter: blur(20px);
+  animation: popup 1s;
 }
 
-@keyframes rotate {
+@keyframes popup {
   from {
-    transform: rotate(0deg);
+    transform: translateY(100%);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes popdown {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(110%);
   }
 }

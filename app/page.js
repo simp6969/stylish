@@ -7,7 +7,7 @@ export default function App() {
   const myRefTitle = useRef();
   const [seein, setSeein] = useState(false);
   const [seeinTitle, setSeeinTitle] = useState(false);
-  const [play, setPlay] = useState(false);
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver((e) => {
@@ -31,10 +31,35 @@ export default function App() {
   }, []);
 
   return (
-    <div className="overflow-hidden">
+    <div
+      style={
+        popup
+          ? {
+              transform: "scale(0.93)",
+              transition: "all 500ms",
+              overflow: "hidden",
+            }
+          : { transition: "all 500ms" }
+      }
+      className="w-[100vw] h-[100vh] "
+    >
       <Header />
+      {popup ? (
+        <div id="popup" className={"popup absolute top-[30vh]"}>
+          hi
+        </div>
+      ) : null}
+
       {/* 1st div */}
       <div
+        onClick={() => {
+          if (popup) {
+            document.getElementById("popup").style.animationName = "popdown";
+            setTimeout(() => {
+              setPopup(false);
+            }, 1000);
+          }
+        }}
         ref={myRefTitle}
         style={
           seeinTitle
@@ -45,10 +70,14 @@ export default function App() {
               }
             : { opacity: 0 }
         }
-        className="ml-[-500px] overflow-hidden flex justify-center items-center h-[100vh] w-[100%] flex-col gap-5"
+        className="exit ml-[-500px] overflow-hidden flex justify-center items-center h-[100vh] w-[100%] flex-col gap-5"
       >
         <h1 className="text-[30px]">Best Paragraph used by Poppins</h1>
-        <button className="button-86" role="button">
+        <button
+          className="button-86"
+          onClick={() => setPopup(true)}
+          role="button"
+        >
           Button
         </button>
         <div className="absolute right-0">
@@ -73,9 +102,9 @@ export default function App() {
               ? {
                   transition: "all 1.5s",
                   opacity: 1,
-                  transform: "translateX(-200px)",
+                  transform: "translateX(0px)",
                 }
-              : { opacity: 0, marginX: "200px" }
+              : { opacity: 0, marginLeft: "-500px" }
           }
           className="flex justify-center items-center gap-[20px] h-[30%]"
         >
@@ -128,49 +157,7 @@ export default function App() {
             <p className="aboutText"></p>
           </div>
           <div className="relative left-[120px] flex flex-col gap-[20px] items-center">
-            <div
-              id="anime"
-              className="cover bg-[url(/theme2.jpg)] bg-cover h-[150px] w-[150px] rounded-[50%]"
-            ></div>
-            <p>Hu tao Cover song</p>
-            <audio id="audio" controls={false}>
-              <source src="/themeSong.mp3" type="audio/mpeg"></source>
-            </audio>
-
-            <div className="flex w-[100%] justify-center gap-[20px]">
-              <svg
-                onClick={() => {
-                  setPlay(!play);
-                  if (!play) {
-                    document.getElementById("anime").style.animationName =
-                      "rotate";
-                  } else
-                    document.getElementById("anime").style.animationName =
-                      "null";
-                }}
-                className="hover:cursor-pointer"
-                height={40}
-                fill="#8c8c8c"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 384 512"
-              >
-                {play ? (
-                  <path
-                    onClick={() => {
-                      document.getElementById("audio").pause();
-                    }}
-                    d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"
-                  />
-                ) : (
-                  <path
-                    onClick={() => {
-                      document.getElementById("audio").play();
-                    }}
-                    d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
-                  />
-                )}
-              </svg>
-            </div>
+            <div className="flex w-[100%] justify-center gap-[20px]"></div>
           </div>
         </div>
       </div>
