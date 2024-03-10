@@ -199,9 +199,4 @@ html {
   width: 70vw;
 }
 .smooth_scrolling {
-  scroll-behavior: smooth;
-}
-
-.smooth_scrolling:active {
-  scroll-margin-top: -100vh;
 }

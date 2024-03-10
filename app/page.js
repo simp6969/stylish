@@ -9,7 +9,7 @@ export default function App() {
   const [seeinTitle, setSeeinTitle] = useState(false);
   const [popup, setPopup] = useState(false);
   const [slide, setSlide] = useState(false);
-  const [scrollBottom, setScrollBottom] = useState(false);
+  const [scrollBottom, setScrollBottom] = useState(true);
   useEffect(() => {
     const observer = new IntersectionObserver((e) => {
       const entry = e[0];
@@ -29,11 +29,21 @@ export default function App() {
       }
     });
     observerTitle.observe(myRefTitle.current);
-  }, []);
+    if (scrollBottom) {
+      const scrollButton = document.getElementById("click_dis");
+      const scrollableContent = document.getElementById("container");
+
+      scrollButton.addEventListener("click", function () {
+        window.scrollTo({
+          top: scrollableContent.scrollHeight, // Target the bottom of the content
+          behavior: "smooth", // Animate the scrolling for a smooth experience
+        });
+      });
+    }
+  }, [scrollBottom]);
   function eventHandler() {
     setSlide(!slide);
   }
-  console.log(slide);
   return (
     <div
       style={
@@ -45,7 +55,8 @@ export default function App() {
             }
           : { transition: "all 500ms" }
       }
-      className="w-[100vw] h-[100vh]"
+      id="container"
+      className={"w-[100vw] h-[100vh] absolute scroll-smooth smooth_scrolling"}
     >
       <Header slide={eventHandler} doTheThing={slide} />
       {popup ? (
@@ -101,10 +112,10 @@ export default function App() {
           onClick={() => {
             setScrollBottom(!scrollBottom);
           }}
-          style={scrollBottom ? { transform: "translateY(-100vh)" } : {}}
-          className="hover:cursor-pointer smooth_scrolling"
+          id="click_dis"
+          className="hover:cursor-pointer "
           fill="#404040"
-          width={50}
+          width={40}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 384 512"
         >
@@ -180,9 +191,9 @@ export default function App() {
         </div>
       </div>
       {/* 3rd div */}
-      <div className="overflow-hidden h-[100vh] w-[100vw] flex justify-center items-center flex-col">
+      {/* <div className="overflow-hidden h-[100vh] w-[100vw] flex justify-center items-center flex-col">
         hi
-      </div>
+      </div> */}
     </div>
   );
 }
