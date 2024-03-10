@@ -8,7 +8,8 @@ export default function App() {
   const [seein, setSeein] = useState(false);
   const [seeinTitle, setSeeinTitle] = useState(false);
   const [popup, setPopup] = useState(false);
-
+  const [slide, setSlide] = useState(false);
+  const [scrollBottom, setScrollBottom] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver((e) => {
       const entry = e[0];
@@ -29,7 +30,10 @@ export default function App() {
     });
     observerTitle.observe(myRefTitle.current);
   }, []);
-
+  function eventHandler() {
+    setSlide(!slide);
+  }
+  console.log(slide);
   return (
     <div
       style={
@@ -41,15 +45,14 @@ export default function App() {
             }
           : { transition: "all 500ms" }
       }
-      className="w-[100vw] h-[100vh] "
+      className="w-[100vw] h-[100vh]"
     >
-      <Header />
+      <Header slide={eventHandler} doTheThing={slide} />
       {popup ? (
         <div id="popup" className={"popup absolute top-[30vh]"}>
           hi
         </div>
       ) : null}
-
       {/* 1st div */}
       <div
         onClick={() => {
@@ -70,7 +73,7 @@ export default function App() {
               }
             : { opacity: 0 }
         }
-        className="exit ml-[-500px] overflow-hidden flex justify-center items-center h-[100vh] w-[100%] flex-col gap-5"
+        className="exit ml-[-500px] overflow-hidden flex justify-center items-center h-[90vh] w-[100%] flex-col gap-5"
       >
         <h1 className="text-[30px]">Best Paragraph used by Poppins</h1>
         <button
@@ -80,9 +83,9 @@ export default function App() {
         >
           Button
         </button>
-        <div className="absolute right-0">
+        <div className="absolute right-0 z-[9999]">
           <video
-            className="rounded-[10px]"
+            className="rounded-[10px] vid"
             muted
             width={600}
             controls={false}
@@ -92,6 +95,21 @@ export default function App() {
             <source src="/hutao.mp4"></source>
           </video>
         </div>
+      </div>
+      <div className="absolute w-[100vw] flex justify-center">
+        <svg
+          onClick={() => {
+            setScrollBottom(!scrollBottom);
+          }}
+          style={scrollBottom ? { transform: "translateY(-100vh)" } : {}}
+          className="hover:cursor-pointer smooth_scrolling"
+          fill="#404040"
+          width={50}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+        >
+          <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
       </div>
       {/* 2nd div */}
       <div className="overflow-hidden h-[100vh] w-[100vw] flex justify-evenly items-center flex-col gap-[30px]">

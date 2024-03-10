@@ -191,3 +191,17 @@ html {
     transform: translateY(110%);
   }
 }
+.vid {
+  transition: all 700ms;
+}
+
+.vid:hover {
+  width: 70vw;
+}
+.smooth_scrolling {
+  scroll-behavior: smooth;
+}
+
+.smooth_scrolling:active {
+  scroll-margin-top: -100vh;
+}
