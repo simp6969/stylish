@@ -8,6 +8,7 @@ body {
   color: #f9f8f0;
   user-select: none;
   background-color: #242424;
+  overflow-x: hidden;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -198,5 +199,26 @@ html {
 .vid:hover {
   width: 70vw;
 }
-.smooth_scrolling {
+.bigSlideGoesHere {
+  /* margin-left: 100vw; */
+}
+
+@media only screen and (max-width: 1669px) {
+  .vid {
+    width: 90vw;
+    display: flex;
+    position: initial;
+    justify-content: center;
+  }
+  .exit {
+    margin-left: -185px;
+  }
+  .image_goes_here {
+    flex-direction: column;
+    height: 100%;
+  }
+  .projects {
+    width: 90%;
+    height: 40%;
+  }
 }

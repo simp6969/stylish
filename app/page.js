@@ -33,17 +33,18 @@ export default function App() {
       const scrollButton = document.getElementById("click_dis");
       const scrollableContent = document.getElementById("container");
 
-      scrollButton.addEventListener("click", function () {
-        window.scrollTo({
-          top: scrollableContent.scrollHeight, // Target the bottom of the content
-          behavior: "smooth", // Animate the scrolling for a smooth experience
-        });
-      });
+      // scrollButton.addEventListener("click", function () {
+      //   window.scrollTo({
+      //     top: scrollableContent.scrollHeight, // Target the bottom of the content
+      //     behavior: "smooth", // Animate the scrolling for a smooth experience
+      //   });
+      // });
     }
   }, [scrollBottom]);
   function eventHandler() {
     setSlide(!slide);
   }
+  console.log(slide);
   return (
     <div
       style={
@@ -55,8 +56,7 @@ export default function App() {
             }
           : { transition: "all 500ms" }
       }
-      id="container"
-      className={"w-[100vw] h-[100vh] absolute scroll-smooth smooth_scrolling"}
+      className={"w-[100vw] h-[100vh] absolute scroll-smooth overflow-x-hidden"}
     >
       <Header slide={eventHandler} doTheThing={slide} />
       {popup ? (
@@ -86,7 +86,9 @@ export default function App() {
         }
         className="exit ml-[-500px] overflow-hidden flex justify-center items-center h-[90vh] w-[100%] flex-col gap-5"
       >
-        <h1 className="text-[30px]">Best Paragraph used by Poppins</h1>
+        <h1 className="text-[30px] text-center">
+          Best Paragraph used by Poppins
+        </h1>
         <button
           className="button-86"
           onClick={() => setPopup(true)}
@@ -94,9 +96,9 @@ export default function App() {
         >
           Button
         </button>
-        <div className="absolute right-0 z-[9999]">
+        <div className="absolute right-0 z-[9999] vid">
           <video
-            className="rounded-[10px] vid"
+            className="rounded-[10px] "
             muted
             width={600}
             controls={false}
@@ -107,7 +109,7 @@ export default function App() {
           </video>
         </div>
       </div>
-      <div className="absolute w-[100vw] flex justify-center">
+      {/* <div className="absolute w-[100vw] flex justify-center">
         <svg
           onClick={() => {
             setScrollBottom(!scrollBottom);
@@ -121,11 +123,12 @@ export default function App() {
         >
           <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
         </svg>
-      </div>
+      </div> */}
       {/* 2nd div */}
-      <div className="overflow-hidden h-[100vh] w-[100vw] flex justify-evenly items-center flex-col gap-[30px]">
+      <div className="overflow-hidden  h-[140vh] w-[100vw] flex justify-evenly items-center flex-col gap-[30px]">
         <h1 className="text-[30px] relative top-0">About Us</h1>
         <div
+          ref={myRef}
           style={
             seein
               ? {
@@ -135,7 +138,7 @@ export default function App() {
                 }
               : { opacity: 0, marginLeft: "-500px" }
           }
-          className="flex justify-center items-center gap-[20px] h-[30%]"
+          className="flex image_goes_here justify-center items-center gap-[20px] h-[30%]"
         >
           <div className="projects" ref={myRef}>
             <p className="aboutText">
