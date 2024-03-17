@@ -9,12 +9,7 @@ body {
   user-select: none;
   background-color: #242424;
   overflow-x: hidden;
-}
-body::-webkit-scrollbar {
-  display: none;
-}
-html {
-  scrollbar-width: none;
+  scrollbar-color: #3c3c3c #2c2c2c;
 }
 
 /* tuusn cod ks */
@@ -155,10 +150,13 @@ html {
 .down {
   transition: all 300ms;
   border: 2px solid transparent;
+  padding: 10px;
+  position: relative;
+  z-index: 9;
 }
 
 .down:hover {
-  border-bottom: 2px solid rgb(61, 61, 61);
+  border-bottom: 2px solid rgb(77, 77, 77);
 }
 .popup {
   position: absolute;
@@ -196,13 +194,6 @@ html {
   transition: all 700ms;
 }
 
-.vid:hover {
-  width: 70vw;
-}
-.bigSlideGoesHere {
-  /* margin-left: 100vw; */
-}
-
 @media only screen and (max-width: 1669px) {
   .vid {
     width: 90vw;
@@ -211,14 +202,6 @@ html {
     justify-content: center;
   }
   .exit {
-    margin-left: -185px;
-  }
-  .image_goes_here {
-    flex-direction: column;
-    height: 100%;
-  }
-  .projects {
-    width: 90%;
-    height: 40%;
+    margin-left: -200px;
   }
 }
