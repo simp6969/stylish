@@ -30,26 +30,37 @@ export default function App() {
   }, []);
 
   function handleFirstPageStyleIssue() {
+    let returnStyle = {};
+
     if (popup) {
-      return {
-        transform: "scale(0.93)",
-        transition: "all 500ms",
+      returnStyle = {
+        ...returnStyle,
+        transform: "scale(" + 0.93 + ")",
+        transition: "all " + 1000 + "ms",
         overflow: "hidden",
       };
     }
     if (!popup) {
-      return { transition: "all 500ms" };
+      returnStyle = {
+        ...returnStyle,
+        transition: "all " + 1000 + "ms",
+      };
     }
+    if (slide) {
+      returnStyle = {
+        ...returnStyle,
+        transform: "translateX(" + -100 + "vw)",
+      };
+    }
+
+    return returnStyle;
   }
   return (
     <div className={"w-[200vw] h-[100vh] flex"}>
       <div
         style={handleFirstPageStyleIssue()}
         className={
-          "transition-all duration-300 w-[50%] h-[100%] scroll-smooth overflow-x-hidden " +
-          slide
-            ? +"translate-x-[100vw]"
-            : +""
+          "transition-all duration-[1000ms] w-[50%] h-[100%] scroll-smooth overflow-x-hidden "
         }
       >
         <div
@@ -188,13 +199,13 @@ export default function App() {
       </div>
       <div
         style={slide ? { transform: "translateX(-100vw)" } : {}}
-        className="p-0 bg-[white] transition-all duration-300 flex justify-center items-center w-[50%] h-[100%]"
+        className="p-0 bg-[transparent] transition-all justify-center duration-[1000ms] flex w-[50%] h-[100%]"
       >
         <button
           onClick={() => {
             setSlide(!slide);
           }}
-          className="p-[20px] text-[white] rounded-[10px] border-2 border-[black] "
+          className="down h-[fit-content]"
         >
           slide back
         </button>

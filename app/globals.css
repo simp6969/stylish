@@ -141,7 +141,7 @@ body {
   top: 30%;
   padding: 20px;
   z-index: 2;
-  transition: all 200ms;
+  transition: all 300ms;
   font-size: 20px;
 }
 .projects:hover .aboutText {
